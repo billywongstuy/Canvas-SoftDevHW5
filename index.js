@@ -4,10 +4,10 @@ var opt = document.getElementById("mode");
 var ctx = c.getContext("2d");
 var prevX = null;
 var prevY = null;
-var inpRed = document.getElementById("cRed")
-var inpBlue = document.getElementById("cBlue")
-var inpGreen = document.getElementById("cGreen")
-
+var inpRed = document.getElementById("cRed");
+var inpBlue = document.getElementById("cBlue");
+var inpGreen = document.getElementById("cGreen");
+var cor = document.getElementById("cor");
 
 ctx.beginPath();
 
@@ -85,3 +85,23 @@ inpRed.addEventListener("change",changeColor);
 inpGreen.addEventListener("change",changeColor);
 inpBlue.addEventListener("change",changeColor);
 			   
+
+var displayCoord = function(e) {
+    cor.style.display = "block";
+    cor.style.position = "absolute";
+    cor.style.left = (e.offsetX+15)+"px";
+    cor.style.top = e.offsetY+"px";
+    cor.innerHTML = (e.offsetX) + "," + (e.offsetY);
+}
+
+
+c.addEventListener("mousemove",displayCoord)
+
+
+var hideCoord = function(e) {
+    cor.style.position = "static";
+    cor.style.display = "none";
+    console.log("move oout");
+}
+
+c.addEventListener("mouseout",hideCoord)
