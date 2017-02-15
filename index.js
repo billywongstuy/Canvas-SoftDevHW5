@@ -4,39 +4,33 @@ var opt = document.getElementById("mode");
 var ctx = c.getContext("2d");
 var prevX = null;
 var prevY = null;
+var inpRed = document.getElementById("cRed")
+var inpBlue = document.getElementById("cBlue")
+var inpGreen = document.getElementById("cGreen")
+
 
 ctx.beginPath();
 
 var crtRect = function(e) {
-
-    var red = document.getElementById("cRed").value;
-    var blue = document.getElementById("cBlue").value;
-    var green = document.getElementById("cGreen").value;
-
-    var color = "rgba(" + red + "," + blue + "," + green + ",0.5)"
+    var red = inpRed.value;
+    var blue = inpBlue.value;
+    var green = inpGreen.value;
+    var color = "rgba(" + red + "," + green + "," + blue + ",0.5)"
     ctx.fillStyle = color;
-    
     ctx.fillRect(e.offsetX,e.offsetY,100,200);
 };
 
 
-var crtLine = function(e) {
-    
-    var red = document.getElementById("cRed").value;
-    var blue = document.getElementById("cBlue").value;
-    var green = document.getElementById("cGreen").value;
-
-    var color = "rgba(" + red + "," + blue + "," + green + ",0.5)"
+var crtLine = function(e) {   
+    var red = inpRed.value;
+    var blue = inpBlue.value;
+    var green = inpGreen.value;
+    var color = "rgba(" + red + "," + green + "," + blue + ",0.5)"
     ctx.fillStyle = color;
-
     var radius = 15;
-
     
-    if (prevX != null) {
-	ctx.moveTo(prevX,prevY);
-    }
-    
-    
+    if (prevX != null) {ctx.moveTo(prevX,prevY);}
+       
     ctx.lineTo(e.offsetX,e.offsetY);
     ctx.stroke();
     
@@ -47,8 +41,7 @@ var crtLine = function(e) {
     
     ctx.arc(e.offsetX,e.offsetY,radius,0,360);
     ctx.stroke();
-    ctx.fill();
-    
+    ctx.fill();    
 }
 
 
@@ -68,12 +61,6 @@ decide();
 opt.addEventListener("change",decide);
 
 
-
-var validColor = function(c) {
-    if (c.length < 6) {return false;}
-    return true;
-}
-
 var clear = function() {
     var ctx = c.getContext("2d");
     ctx.fillStyle = "#ffffff";
@@ -84,3 +71,17 @@ var clear = function() {
 }
 
 b.addEventListener("click",clear);
+
+
+var changeColor = function() {
+    var red = inpRed.value;
+    var blue = inpBlue.value;
+    var green = inpGreen.value;
+    var cDiv = document.getElementById("choColor")
+    cDiv.style.backgroundColor = "rgb("+red+","+green+","+blue+")"
+}
+
+inpRed.addEventListener("change",changeColor);
+inpGreen.addEventListener("change",changeColor);
+inpBlue.addEventListener("change",changeColor);
+			   

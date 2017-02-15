@@ -8,22 +8,28 @@
   <body>
     <canvas height="500" width="500" id="slate"></canvas></br>
 
-    <h2>Pick Your Color</h3>  
-    Red: <input type="number" id="cRed" value="255">
-    Blue: <input type="number" id="cBlue" value="0">
-    Green: <input type="number" id="cGreen" value="0">
-    </br>
-
     <p>
-    <select id="mode">
-      <option value="rect">Rectangles</option>
-      <option value="line" selected>Lines</option>
-    </select>
+      <h2>Mode</h2> 
+	 <select id="mode">
+	   <option value="rect">Rectangles</option>
+	   <option value="line" selected>Lines</option>
+	 </select>
     </p>
     
-    <button type="button" id="clear">Clear</button>
+    <h2>Pick Your Color</h2>
+    <h3>Change the values of the colors below</h3>
+    Red: <input type="number" id="cRed" value="255" min="0" max="255">
+    Blue: <input type="number" id="cBlue" value="0" min="0" max="255">
+    Green: <input type="number" id="cGreen" value="0" min="0" max="255">
+    </br>
+
+    <h2>Chosen Color</h2>
+    <div id="choColor"></div>
+
     
-    <script src="index.js"></script>
+    <p><button type="button" id="clear">Clear Canvas</button>
+    
+    <script src="index.js"></script></p>
     
   </body>
   
